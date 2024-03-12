@@ -13,10 +13,11 @@ namespace Bookify.Models
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Custmer> Custmers { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public HotelDbContext(DbContextOptions<HotelDbContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-68GQKG3;Initial Catalog=Hotel;Integrated Security=True;TrustServerCertificate=True");
+
         }
+ 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
