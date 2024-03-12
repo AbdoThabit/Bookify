@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Bookify.ViewModel;
 
 
 namespace Bookify.Models
@@ -15,6 +16,7 @@ namespace Bookify.Models
         {
 
         }
+        public DbSet<Bookify.ViewModel.LoginVM> LoginVM { get; set; } = default!;
 
     }
 

@@ -4,6 +4,8 @@ namespace Bookify.ViewModel
 {
     public class LoginVM
     {
+        //public int Id { get; set; }
+    
         [Required(ErrorMessage = "*")]
         public string username { get; set; }
         [Required(ErrorMessage = "*")]

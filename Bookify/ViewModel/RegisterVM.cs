@@ -4,6 +4,7 @@ namespace Bookify.ViewModel
 {
     public class RegisterVM
     {
+        //public int Id { get; set; }
         [Required(ErrorMessage = "*")]
         [MinLength(5, ErrorMessage = "username must be greater than 5 letter")]
         public string Username { get; set; }
