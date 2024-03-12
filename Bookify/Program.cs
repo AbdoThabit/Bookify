@@ -1,3 +1,6 @@
+using Bookify.Models;
+using Microsoft.AspNetCore.Identity;
+
 namespace Bookify
 {
     public class Program
@@ -8,6 +11,19 @@ namespace Bookify
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // identity
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
+              options =>
+              {
+                  options.Password.RequireNonAlphanumeric = false;
+                  options.Password.RequireDigit = false;
+                  options.Password.RequireLowercase = false;
+                  options.Password.RequireUppercase = false;
+                  options.Password.RequiredLength = 4;
+              }
+              ).AddEntityFrameworkStores<HotelDbContext>();
 
             var app = builder.Build();
 
@@ -23,7 +39,7 @@ namespace Bookify
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseAuthorization();
 
             app.MapControllerRoute(

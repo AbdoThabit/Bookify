@@ -2,7 +2,7 @@
 
 namespace Bookify.Controllers
 {
-    public class CustomerController : Controller
+    public class CustmerController : Controller
     {
         public IActionResult Index()
         {
