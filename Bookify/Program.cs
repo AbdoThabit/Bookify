@@ -16,7 +16,7 @@ namespace Bookify
 
             // identity
             builder.Services.AddDbContextPool<HotelDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ThabitConnection")));
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
               options =>
