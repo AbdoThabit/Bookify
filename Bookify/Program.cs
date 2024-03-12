@@ -1,5 +1,7 @@
 using Bookify.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace Bookify
 {
@@ -13,6 +15,8 @@ namespace Bookify
             builder.Services.AddControllersWithViews();
 
             // identity
+            builder.Services.AddDbContextPool<HotelDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
               options =>
@@ -44,7 +48,7 @@ namespace Bookify
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Customer}/{action=Index}/{id?}");
+                pattern: "{controller=Custmer}/{action=Index}/{id?}");
 
             app.Run();
         }
