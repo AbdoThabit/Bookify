@@ -8,23 +8,21 @@ namespace Bookify.Models
     public class Booking
     {
         [Key]
-        public int BookingId { get; set; }
+        public int BookingId { get; set;}
 
-        [ForeignKey("Customer")]
-        public int CustomerId { get; set; }
-
-        [ForeignKey("Room")]
-        public int RoomNum { get; set; }
 
         [Required(ErrorMessage = "Check-in Date is required")]
-        public DateTime CheckInDate { get; set; }
+        public DateTime CheckInDate { get; set;}
 
         [Required(ErrorMessage = "Check-out Date is required")]
         public DateTime CheckOutDate { get; set; }
-
         public decimal TotalPrice { get; set; }
-
-        public Custmer custmer { get; set; }
+        [ForeignKey("Room")]
+        public int RoomNum { get; set;}
         public Room Room { get; set; }
+
+        [ForeignKey("User")]
+        public string GuestId { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
