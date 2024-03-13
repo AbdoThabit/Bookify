@@ -43,6 +43,11 @@ namespace Bookify.Controllers
                 ApplicationUser user = new()
                 {
                     UserName = registerVM.Username,
+                    FirstName = registerVM.FirstName,
+                    LastName = registerVM.LastName,
+                    Address = registerVM.Address,
+                    Gender = registerVM.Gender,
+                    Phone =registerVM.Phone,
                     Email = registerVM.Email,
                     PasswordHash = registerVM.Password
                 };
@@ -51,7 +56,7 @@ namespace Bookify.Controllers
                 {
                 
                     // add user to role
-                    await userManager.AddToRoleAsync(user, "Admin");
+                    await userManager.AddToRoleAsync(user, "Customer");
 
                     return RedirectToAction("Login", "Account");
                 }

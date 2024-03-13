@@ -40,12 +40,21 @@ namespace Bookify.Controllers
                     bool found = await userManager.CheckPasswordAsync(user, loginVM.Password);
                     if (found)
                     {
-                        // create cookie
                         await signInManager.SignInAsync(user, isPersistent: loginVM.IsPresistent);
 
-                      //claims
-                      //  await signInManager.SignInWithClaimsAsync(user, loginVM.IsPresistent);
-                        return RedirectToAction("Index", "User");
+                        //claims
+                        //  await signInManager.SignInWithClaimsAsync(user, loginVM.IsPresistent);
+                        if (User.IsInRole("Admin"))
+                        {
+                            return RedirectToAction("Index", "Home");
+
+                        }
+                        if (User.IsInRole("Customer"))
+                        {
+                            return RedirectToAction("Index", "Custmer");
+
+                        }// create cookie
+
                     }
                 }
 
@@ -54,12 +63,11 @@ namespace Bookify.Controllers
             return View(loginVM);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index" , "Custmer");
         }
     }
 }

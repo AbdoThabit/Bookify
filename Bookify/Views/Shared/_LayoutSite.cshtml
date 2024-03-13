@@ -1,4 +1,5 @@
-﻿
+﻿@inject SignInManager<ApplicationUser> SignManger
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,11 @@
 	Comfort.">
 	<title>Star Hotels</title>
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./assets/css/global-header.css">
-	<link rel="stylesheet" href="./assets/css/global-footer.css">
-	<link rel="stylesheet" href="./assets/css/accesibility.css">
-	<link rel="stylesheet" href="./assets/css/index.css">
-	<link rel="shortcut icon" href="./assets/img/favicon.webp" type="image/x-icon">
+	<link rel="stylesheet" href="~/assets/css/global-header.css">
+	<link rel="stylesheet" href="~/assets/css/global-footer.css">
+	<link rel="stylesheet" href="~/assets/css/accesibility.css">
+	<link rel="stylesheet" href="~/assets/css/index.css">
+	<link rel="shortcut icon" href="~/assets/img/favicon.webp" type="image/x-icon">
 </head>
 <body class="scroll-bar">
     <div id="loader">
@@ -50,6 +51,19 @@
                     <li class="header-nav-list"><a class="header-nav-link" href="facilities.html">Facilities</a></li>
                     <li class="header-nav-list"><a class="header-nav-link" href="contact-page.html">Contact Us</a></li>
                     <li class="header-nav-list"><a class="header-btn header-btn-custom" href="https://timbu.com/search?query=hotel">BOOK NOW</a></li>
+                    @if (SignManger.IsSignedIn(User))
+                    {
+                        <li class="header-nav-list">@User.Identity.Name</li>
+                        <li class="header-nav-list"><a class="header-nav-link"  asp-action="logout" asp-controller="Account">Logout</a></li>
+
+
+                    }else{
+                        <li class="header-nav-list"><a class="header-nav-link" asp-action="Login" asp-controller="Account">Login</a></li>
+                        <li class="header-nav-list"><a class="header-nav-link" asp-action="Registration" asp-controller="User">Register</a></li>
+                    } 
+                    
+
+
                 </ul>
 
                 <div class="header-hamburger-icon">
@@ -101,12 +115,12 @@
         </div>
         <div class="row center-lg">
             <div class="col image-col right-marg">
-                <img src="assets/img/hotel-1.webp" alt="room-image" class="small-image">
-                <img src="assets/img/hotel-2.webp" alt="room-image" class="small-image">
-                <img src="assets/img/hotel-3.webp" alt="room-image" class="small-image img-hide">
+                <img src="~/assets/img/hotel-1.webp" alt="room-image" class="small-image">
+                <img src="~/assets/img/hotel-2.webp" alt="room-image" class="small-image">
+                <img src="~/assets/img/hotel-3.webp" alt="room-image" class="small-image img-hide">
                 <div class="side-by-side-container">
                     <div class="large-image-container">
-                        <img src="assets/img/hotel-4-large.webp" alt="room-image-large" class="large-image">
+                        <img src="~/assets/img/hotel-4-large.webp" alt="room-image-large" class="large-image">
                     </div>
                     <section class="stacked-image-container">
                         <div><img src="assets/img/hotel-5.webp" alt="room-image" class="small-image"></div>
@@ -121,19 +135,19 @@
                 <ul class="offers-list">
                     <li>
                         <div>
-                            <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                            <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                             <p class="list-text">Standard Room</p>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                            <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                             <p class="list-text">Executive Room</p>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                            <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                             <p class="list-text">King Suite</p>
                         </div>
                     </li>
@@ -163,11 +177,11 @@
                 <p class="room-text">Designed specifically for Practicality and <br> comfort</p>
                 <div>
                     <div class="details-container">
-                        <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                        <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                         <p class="list-text">2 Persons</p>
                     </div>
                     <div class="details-container">
-                        <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                        <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                         <p class="list-text">1 Kingsize bed</p>
                     </div>
                 </div>
@@ -184,11 +198,11 @@
                 <p class="room-text">Designed specifically for Practicality and <br> comfort</p>
                 <div>
                     <div class="details-container">
-                        <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                        <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                         <p class="list-text">2 Persons</p>
                     </div>
                     <div class="details-container">
-                        <img src="assets/img/bed.png" alt="tick" class="list-icon">
+                        <img src="~/assets/img/bed.png" alt="tick" class="list-icon">
                         <p class="list-text">1 Kingsize bed</p>
                     </div>
                 </div>
@@ -205,11 +219,11 @@
                 <p class="room-text">Designed specifically for Practicality and <br> comfort</p>
                 <div>
                     <div class="details-container">
-                        <img src="assets/img/check-square.svg" alt="tick" class="list-icon">
+                        <img src="~/assets/img/check-square.svg" alt="tick" class="list-icon">
                         <p class="list-text">2 Persons</p>
                     </div>
                     <div class="details-container">
-                        <img src="assets/img/bed.png" alt="tick" class="list-icon">
+                        <img src="~/assets/img/bed.png" alt="tick" class="list-icon">
                         <p class="list-text">1 Kingsize bed</p>
                     </div>
                 </div>
@@ -235,18 +249,18 @@
                 <div class="footer-contact-us">
                     <h3 class="footer-description-title">Contact Us</h3>
                     <p class="footer-description-detail">
-                        <img src="./assets/img/map-pin.svg" class="footer-description-icon" alt="star hotel location">
+                        <img src="~/assets/img/map-pin.svg" class="footer-description-icon" alt="star hotel location">
 
                         <span>23, Fola Osibo, Lekki Phase 1</span>
                     </p>
                     <p class="footer-description-detail">
-                        <img src="./assets/img/phone.svg" class="footer-description-icon" alt="star hotels phone number">
+                        <img src="~/assets/img/phone.svg" class="footer-description-icon" alt="star hotels phone number">
                         <span>
                             08185956620
                         </span>
                     </p>
                     <p class="footer-description-detail">
-                        <img src="./assets/img/mail.svg" class="footer-description-icon" alt="star hotels email">
+                        <img src="~/assets/img/mail.svg" class="footer-description-icon" alt="star hotels email">
                         <span>support@starhotels.com</span>
                     </p>
                 </div>
@@ -255,17 +269,17 @@
                     <ul class="footer-follow-us-lists">
                         <li class="follow-us-list">
                             <a href="">
-                                <img src="./assets/img/facebook.svg" alt="star hotels facebook page">
+                                <img src="~/assets/img/facebook.svg" alt="star hotels facebook page">
                             </a>
                         </li>
                         <li class="follow-us-list">
                             <a href="">
-                                <img src="./assets/img/twitter.svg" alt="star hotels twitter page">
+                                <img src="~/assets/img/twitter.svg" alt="star hotels twitter page">
                             </a>
                         </li>
                         <li class="follow-us-list">
                             <a href="">
-                                <img src="./assets/img/instagram.svg" alt="star hotels instagram page">
+                                <img src="~/assets/img/instagram.svg" alt="star hotels instagram page">
                             </a>
                         </li>
                     </ul>
@@ -283,7 +297,7 @@
             });
         })();
     </script>
-    <script defer async src="assets/js/toggleHamburger.js"></script>
+    <script defer async src="~/assets/js/toggleHamburger.js"></script>
     <!-- Code injected by live-server -->
     <script>
         // <![CDATA[  <-- For SVG support

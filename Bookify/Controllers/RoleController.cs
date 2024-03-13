@@ -6,7 +6,7 @@ using NuGet.Versioning;
 
 namespace Bookify.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class RoleController(RoleManager<IdentityRole> roleManager) : Controller
     {
         public IActionResult Index()

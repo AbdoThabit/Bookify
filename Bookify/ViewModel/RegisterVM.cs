@@ -5,15 +5,28 @@ namespace Bookify.ViewModel
     public class RegisterVM
     {
         //public int Id { get; set; }
-        [Required(ErrorMessage = "*")]
+        [Required]
         [MinLength(5, ErrorMessage = "username must be greater than 5 letter")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "*")]
+        [Required]
+
+        public string FirstName { get; set;}
+        [Required]
+
+        public string LastName { get; set; }
+        [Required]
+
+        public string Phone { get; set; }
+        [Required]
+        [RegularExpression("^(Male|Female)$", ErrorMessage = "Gender must be either 'Male' or 'Female'.")]
+        public string Gender { get; set; }
+
+        [Required]
         public string Address { get; set; }
         [Required(ErrorMessage = "*")]
         [EmailAddress]
         public string Email { get; set; }
-        [Required(ErrorMessage = "*")]
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [DataType(DataType.Password)]
