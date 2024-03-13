@@ -1,4 +1,5 @@
 using Bookify.Models;
+using Bookify.RoomRepositary;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
@@ -16,8 +17,8 @@ namespace Bookify
 
             // identity
             builder.Services.AddDbContextPool<HotelDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+                                                              options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddScoped<IRoomRepo, RoomRepo>();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
               options =>
               {
