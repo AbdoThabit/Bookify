@@ -16,6 +16,6 @@ namespace Bookify.Models
         [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
         public decimal PricePerNight { get; set; }
 
-        public ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
     }
 }
