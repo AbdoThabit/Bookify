@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Bookify.ViewModel;
+using System.Reflection.Emit;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace Bookify.Models
@@ -14,9 +16,14 @@ namespace Bookify.Models
 
         public HotelDbContext(DbContextOptions<HotelDbContext> options) : base(options)
         {
-
+            
         }
-        public virtual DbSet<Bookify.ViewModel.LoginVM> LoginVM { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+       
 
     }
 

@@ -30,6 +30,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RoomType.Name)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomType.Description)
+                </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RoomNum">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.RoomNum">Details</a> |
