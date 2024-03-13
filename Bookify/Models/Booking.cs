@@ -19,7 +19,7 @@ namespace Bookify.Models
         public decimal TotalPrice { get; set; }
         [ForeignKey("Room")]
         public int RoomNum { get; set; }
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
 
         [ForeignKey("User")]
         public string GuestId { get; set; }
