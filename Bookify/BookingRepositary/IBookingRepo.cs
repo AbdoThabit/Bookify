@@ -7,7 +7,7 @@ namespace Bookify.BookingRepositary
     {
        public List<Booking> GetAllBookings();
        public void AddBooking(BookingVM model);
-     
+       
        public Booking DeleteBooking(int id);
      
     }

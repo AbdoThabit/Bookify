@@ -41,6 +41,15 @@ namespace Bookify.Controllers
         [HttpPost]
         public IActionResult GuestBooking(BookingVM booking)
         {
+            Room room = _roomRepo.getRoomById(booking.RoomTypeId);
+            if(room != null)
+            {
+                TimeSpan difference = booking.CheckOutDate - booking.CheckInDate;
+                int days = (int)difference.TotalDays;
+                booking.TotalPrice = days * room.RoomType.PricePerNight;
+            }
+            
+            
             _bookingRepository.AddBooking(booking);
             return RedirectToAction("Index");
         }

@@ -1,15 +1,36 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Bookify.GuestRepositary;
+using Bookify.Models;
+using Bookify.ViewModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Bookify.Controllers
 {
-    [Authorize(Roles = "Admin")]
-
     public class GuestController : Controller
     {
-        public IActionResult Index()
+        public IGuestRepo GuestRepo { get; }
+        public GuestController(IGuestRepo guestRepo)
         {
-            return View();
+            GuestRepo = guestRepo;
+        }
+
+       
+
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> Index()
+        {
+            List<ApplicationUser> customers = await GuestRepo.GetAllCustomers();
+            return View(customers);
+        }
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await GuestRepo.removeUser(id);
+            return View("Index");
         }
     }
 }

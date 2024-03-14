@@ -57,6 +57,17 @@ namespace Bookify.Controllers
            
             // return View(booking);
         }
+        public ActionResult Delete (int id,int roomid)
+        {
+
+            _bookingRepository.DeleteBooking(id);
+            Room room = _roomRepo.getRoomById(roomid);
+            room.Status = "Avaliable";
+            _roomRepo.Update(room);
+            return RedirectToAction("Index");
+
+            // return View(booking);
+        }
 
     }
 

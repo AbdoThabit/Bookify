@@ -36,5 +36,11 @@ namespace Bookify.Controllers
             return RedirectToAction("index","Room");
         }
 
+        public IActionResult Delete(int id)
+        {
+            RoomRepo.delete(id);
+
+            return RedirectToAction("index", "Room");
+        }
     }
 }
