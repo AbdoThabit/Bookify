@@ -34,13 +34,13 @@
                 <div class="container">
                     <div class="row">
                         <div class=" mt-5 col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-                            <img  src="~/img/illustrations/illustration-signup.jpg" />
+                            <h1 style="color:#D4AF37">Welcome to stars hotel</h1>
+                            <img  src="~/img/Hotel1.jpg" />
                         </div>
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
                             <div class="card card-plain">
                                 <div class="card-header">
                                     <h4 class="font-weight-bolder">Sign Up</h4>
-                                    <p class="mb-0">Enter your email and password to register</p>
                                 </div>
                                 <div class="card-body">
                                     <form method="post" asp-action="Registration" asp-controller="User" role="form">
@@ -106,14 +106,14 @@
                                         <div style="color:red" asp-validation-summary="All" class="form-floating mb-3">
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                                            <button style="background-color:#D4AF37" type="submit" class="btn btn-lg text-white  btn-lg w-100 mt-4 mb-0">Sign Up</button>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                                     <p class="mb-2 text-sm mx-auto">
                                         Already have an account?
-                                        <a asp-action="Login" asp-controller="Account" class="text-primary text-gradient font-weight-bold">Sign in</a>
+                                        <a asp-action="Login" asp-controller="Account" class="text-warning text-gradient font-weight-bold">Sign in</a>
                                     </p>
                                 </div>
                             </div>

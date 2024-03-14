@@ -1,10 +1,13 @@
 ﻿using Bookify.Models;
 using Bookify.RoomRepositary;
 using Bookify.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookify.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class RoomController : Controller
     {
         public RoomController(IRoomRepo roomRepo)

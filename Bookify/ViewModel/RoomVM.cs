@@ -15,7 +15,7 @@ namespace Bookify.ViewModel
         public int id { get; set; }
         [Required]
         [RegularExpression("^(free|reserved)$", ErrorMessage = "Status can only be 'free' or 'reserved'")]
-        public string Status { get; set; }
+        public string Status { get; set; } = "Avaliable";
         [Required]
         public int RoomTypeId { get; set; }
 

@@ -45,6 +45,11 @@ namespace Bookify.RoomRepositary
             return Context.RoomTypes.ToList();
         }
 
-       
+        public List<Room> getAllAvalibleRooms()
+        {
+            return Context.Rooms.Where(r => r.Status == "Avaliable").Select(r=>new Room {RoomNum=r.RoomNum ,RoomType=r.RoomType }).ToList();
+        }
+
+
     }
 }

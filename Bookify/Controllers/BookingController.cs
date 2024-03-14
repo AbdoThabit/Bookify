@@ -2,28 +2,47 @@
 using Bookify.BookingRepositary;
 using Microsoft.AspNetCore.Mvc;
 using Bookify.ViewModel;
+using Bookify.RoomRepositary;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Bookify.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class BookingController : Controller
     {
-        public BookingController(IBookingRepo BookingRepo)
+        private readonly IBookingRepo _bookingRepository;
+        private readonly IRoomRepo _roomRepo;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+
+
+
+
+        public BookingController(IBookingRepo BookingRepo, IRoomRepo roomRepo, UserManager<ApplicationUser> userManager)
         {
-             _bookingRepository =BookingRepo;
+            _bookingRepository = BookingRepo;
+            _roomRepo = roomRepo;
+            _userManager = userManager;
         }
 
-        public IBookingRepo _bookingRepository { get; }
 
-        public ActionResult Index()
+        public  ActionResult Index()
         {
+         
             var bookings = _bookingRepository.GetAllBookings();
             return View(bookings);
         }
 
      
-        public ActionResult Create()
+        public async Task < ActionResult> Create()
         {
+            ViewBag.Rooms = _roomRepo.getAllAvalibleRooms();
+            var users = await _userManager.GetUsersInRoleAsync("Customer");
+            ViewBag.Guests = users.ToList();
             return View();
         }
 
