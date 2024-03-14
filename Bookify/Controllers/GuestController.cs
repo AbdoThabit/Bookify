@@ -1,4 +1,5 @@
-﻿using Bookify.Models;
+﻿using Bookify.GuestRepositary;
+using Bookify.Models;
 using Bookify.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -9,11 +10,14 @@ namespace Bookify.Controllers
 {
     public class GuestController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        GuestController(UserManager<ApplicationUser> userManager)
+        public IGuestRepo GuestRepo { get; }
+        GuestController(IGuestRepo guestRepo)
         {
-            this.userManager = userManager;
+            GuestRepo = guestRepo;
         }
+
+       
+
         [Authorize(Roles = "Admin")]
 
         public IActionResult Index()
