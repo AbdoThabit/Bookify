@@ -1,9 +1,11 @@
-﻿using Bookify.Models;
+﻿using Bookify.GuestRepositary;
+using Bookify.Models;
 using Bookify.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+
 
 namespace Bookify.GuestRepositary
 {
@@ -22,6 +24,10 @@ namespace Bookify.GuestRepositary
             var usersInCustomerRole = await userManager.GetUsersInRoleAsync("CUSTOMER");
             return usersInCustomerRole.ToList();
         }
+        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
+        {
+            return await userManager.FindByIdAsync(userId);
+        }
         public void addRole()
         {
             throw new NotImplementedException();
@@ -39,9 +45,17 @@ namespace Bookify.GuestRepositary
             throw new NotImplementedException();
         }
 
-        public void removeUser(string userId)
+        public async Task<ApplicationUser> removeUser(string userId)
         {
-            throw new NotImplementedException();
+            var user = await GetUserByIdAsync(userId);
+            if (user != null)
+            {
+                await userManager.DeleteAsync(user);
+                return user;
+            }
+
+            
+            return null;
         }
 
         public void updateuser(ApplicationUser user)

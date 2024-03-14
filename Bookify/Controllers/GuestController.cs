@@ -25,5 +25,12 @@ namespace Bookify.Controllers
             List<ApplicationUser> customers = await GuestRepo.GetAllCustomers();
             return View(customers);
         }
+        [Authorize(Roles = "Admin")]
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            await GuestRepo.removeUser(id);
+            return View("Index");
+        }
     }
 }

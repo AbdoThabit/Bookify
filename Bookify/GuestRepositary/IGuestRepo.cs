@@ -5,8 +5,10 @@ namespace Bookify.GuestRepositary
     public interface IGuestRepo
     {
         public  Task<List<ApplicationUser>> GetAllCustomers();
+        public Task<ApplicationUser> GetUserByIdAsync(string userId);
+        
         public void addRole();
-        public void removeUser(string userId);
+        public Task<ApplicationUser> removeUser(string userId);
         public void removeRole();
         public void addUser(ApplicationUser user);
         
