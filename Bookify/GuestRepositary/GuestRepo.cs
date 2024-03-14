@@ -12,7 +12,7 @@ namespace Bookify.GuestRepositary
         private readonly UserManager<ApplicationUser> userManager;
         private readonly HotelDbContext context;
 
-        GuestRepo(UserManager<ApplicationUser> userManager , HotelDbContext _context)
+        public GuestRepo(UserManager<ApplicationUser> userManager , HotelDbContext _context)
         {
             this.userManager = userManager;
             context = _context;

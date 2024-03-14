@@ -11,7 +11,7 @@ namespace Bookify.Controllers
     public class GuestController : Controller
     {
         public IGuestRepo GuestRepo { get; }
-        GuestController(IGuestRepo guestRepo)
+        public GuestController(IGuestRepo guestRepo)
         {
             GuestRepo = guestRepo;
         }
@@ -20,9 +20,10 @@ namespace Bookify.Controllers
 
         [Authorize(Roles = "Admin")]
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<ApplicationUser> customers = await GuestRepo.GetAllCustomers();
+            return View(customers);
         }
     }
 }
