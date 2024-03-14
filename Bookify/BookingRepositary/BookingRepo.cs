@@ -17,17 +17,20 @@ namespace Bookify.BookingRepositary
         {
             return Context.Bookings.ToList();
         }
-        public Booking AddBooking(BookingVM model)
+        public void AddBooking(BookingVM model)
         {
             Booking booking = new Booking()
             {
                 CheckInDate = model.CheckInDate,
-                 CheckOutDate = model.CheckOutDate,
-                TotalPrice = model.TotalPrice
+                CheckOutDate = model.CheckOutDate,
+                TotalPrice = model.TotalPrice,
+                RoomNum = model.RoomTypeId,
+                GuestId = model.GuestId,
             };
+            var room = Context.Rooms.Find(model.RoomTypeId);
+            room.Status = "Reservied";
             Context.Bookings.Add(booking);
             Context.SaveChanges();
-            return booking;
         }
         public Booking DeleteBooking(int id)
         {

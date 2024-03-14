@@ -17,7 +17,9 @@
             <th>
                 TotalPrice
             </th>
-            <th></th>
+            <th>Room Type</th>
+            <th>Guest Name</th>
+
         </tr>
     </thead>
     <tbody>
@@ -34,10 +36,12 @@
                     @item.TotalPrice
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+                    @item.Room.RoomType.Name
                 </td>
+                <td>
+                    @item.User.FirstName  @item.User.LastName
+                </td>
+               
             </tr>
         }
     </tbody>
