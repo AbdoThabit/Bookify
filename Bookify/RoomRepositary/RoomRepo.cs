@@ -25,7 +25,9 @@ namespace Bookify.RoomRepositary
         }
         public Room Update(Room room)
         {
-            throw new NotImplementedException();
+            Context.Rooms.Update(room);
+            Context.SaveChanges();
+            return room;
         }
 
         public Room delete(int roomnum)
