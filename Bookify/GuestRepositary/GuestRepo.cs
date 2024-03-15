@@ -28,7 +28,7 @@ namespace Bookify.GuestRepositary
         {
             return await userManager.FindByIdAsync(userId);
         }
-        public void addRole()
+        public async Task<IActionResult> AddRoleToUser(string userId, string roleId)
         {
             throw new NotImplementedException();
         }
