@@ -7,8 +7,8 @@ namespace Bookify.GuestRepositary
     {
         public  Task<List<ApplicationUser>> GetAllCustomers();
         public Task<ApplicationUser> GetUserByIdAsync(string userId);
-
-        public  Task<IActionResult> AddRoleToUser(string userId, string roleId);
+        public Task<IEnumerable<string>> GetRolesForUser(string userId);
+        public  Task<bool> AddRoleToUser(string userId, string roleName);
         public Task<ApplicationUser> removeUser(string userId);
         public void removeRole();
         public void addUser(ApplicationUser user);
