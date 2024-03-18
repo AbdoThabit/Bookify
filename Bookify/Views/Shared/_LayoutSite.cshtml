@@ -1,4 +1,5 @@
-﻿@inject SignInManager<ApplicationUser> SignManger
+﻿@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<ApplicationUser> SignManger
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,11 +49,14 @@
                         <a class="header-nav-link"
                            href="rooms-and-suites.html">Rooms and Suites</a>
                     </li>
-                    <li class="header-nav-list"><a class="header-nav-link" href="facilities.html">Facilities</a></li>
                     <li class="header-nav-list"><a class="header-nav-link" href="contact-page.html">Contact Us</a></li>
-                    <li class="header-nav-list"><a class="header-btn header-btn-custom" href="https://timbu.com/search?query=hotel">BOOK NOW</a></li>
+                    <li class="header-nav-list"><a class="header-btn header-btn-custom" href="@Url.Action("Index", "Custmer")#booking">BOOK NOW</a></li>
                     @if (SignManger.IsSignedIn(User))
                     {
+                        var user = await userManager.GetUserAsync(User);
+                        var GuestId = user.Id;
+                        <li class="header-nav-list"><a class="header-nav-link" asp-action="CustomerReservations" asp-controller="Custmer" asp-route-id="@GuestId">My Reservations</a></li>
+
                         <li class="header-nav-list">@User.Identity.Name</li>
                         <li class="header-nav-list"><a class="header-nav-link"  asp-action="logout" asp-controller="Account">Logout</a></li>
 
