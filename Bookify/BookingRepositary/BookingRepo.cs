@@ -36,6 +36,7 @@ namespace Bookify.BookingRepositary
             Context.Bookings.Add(booking);
             Context.SaveChanges();
         }
+
         public Booking DeleteBooking(int id)
         {
             var booking = Context.Bookings.Find(id);
