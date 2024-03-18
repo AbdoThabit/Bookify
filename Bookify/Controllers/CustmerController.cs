@@ -53,5 +53,12 @@ namespace Bookify.Controllers
             _bookingRepository.AddBooking(booking);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult showDetails(int RoomNum)
+        {
+            var room = _roomRepo.getRoomById(RoomNum);
+            return View("RoomDetails",room);
+        }
+
     }
 }
