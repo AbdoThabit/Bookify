@@ -32,7 +32,7 @@ namespace Bookify.GuestRepositary
         {
             var user =await GetUserByIdAsync(userId);
             var userRoles = await userManager.GetRolesAsync(user);
-            return userRoles;
+            return userRoles.ToList();
 
         }
         public async Task<bool> AddRoleToUser(string userId, string roleName)
