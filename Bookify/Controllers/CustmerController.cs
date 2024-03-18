@@ -57,7 +57,13 @@ namespace Bookify.Controllers
         public IActionResult showDetails(int RoomNum)
         {
             var room = _roomRepo.getRoomById(RoomNum);
-            return View("RoomDetails",room);
+            return View("RoomDetails", room);
+        }
+        [HttpGet]
+        public IActionResult CustomerReservations(String id)
+        {
+            var userReservations = _bookingRepository.GetUserBookings(id);
+            return View(userReservations);
         }
 
     }

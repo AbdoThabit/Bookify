@@ -12,6 +12,10 @@ namespace Bookify.BookingRepositary
         }
 
         public HotelDbContext Context { get; }
+        public List<Booking> GetUserBookings(String UserId)
+        {
+            return Context.Bookings.Where(b=>b.GuestId ==UserId).ToList();
+        }
 
         public List<Booking> GetAllBookings()
         {
