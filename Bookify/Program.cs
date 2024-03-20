@@ -2,6 +2,7 @@ using Bookify.BookingRepositary;
 using Bookify.GuestRepositary;
 using Bookify.Models;
 using Bookify.RoomRepositary;
+using Bookify.UserRepositary;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
@@ -19,8 +20,9 @@ namespace Bookify
 
             // identity
             builder.Services.AddDbContextPool<HotelDbContext>(options =>
-                                                              options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                                                              options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("ThabitConnection")));
             builder.Services.AddScoped<IRoomRepo, RoomRepo>();
+            builder.Services.AddScoped<IUserRepo, UserRepo>();
             builder.Services.AddScoped<IGuestRepo, GuestRepo>();
             builder.Services.AddScoped<IBookingRepo, BookingRepo>();
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(

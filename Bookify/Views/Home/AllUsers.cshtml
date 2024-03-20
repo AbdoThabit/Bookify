@@ -1,18 +1,15 @@
-﻿@model List<Booking>
-
-
-
+﻿@model List<ApplicationUser>
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div style="background-color:#D4AF37;" class=" border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Bookings</h6>
+                        <h6 class="text-white text-capitalize ps-3">Users</h6>
 
                     </div>
-                    <a asp-action="Create" asp-controller="Booking" class="text-white btn  text-xs mt-3" style="background-color:#D4AF37;color:white" data-toggle="tooltip" data-original-title="Edit user">
-                        Add New Booking
+                    <a asp-action="AddUser" asp-controller="Home" class="text-white btn btn-secondary font-weight-bold text-xs mt-3" style="background-color:#D4AF37;color:white" data-toggle="tooltip" data-original-title="Edit user">
+                        Add
                     </a>
                 </div>
                 <div class="card-body px-0 pb-2">
@@ -21,18 +18,23 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        checkin
+                                        First Name
                                     </th>
                                     <th>
-                                        checkout
+                                        Last Name
                                     </th>
                                     <th>
-                                        TotalPrice
+                                        Address
                                     </th>
-                                    <th>Room Type</th>
-                                    <th>Guest Name</th>
-                                    <th>Manage</th>
-
+                                    <th>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        Gender
+                                    </th>
+                                    <th>
+                                        Manage
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,24 +42,24 @@
                                 {
                                     <tr>
                                         <td>
-                                            @item.CheckInDate
+                                            @item.FirstName
                                         </td>
                                         <td>
-                                            @item.CheckOutDate
+                                            @item.LastName
                                         </td>
                                         <td>
-                                            @item.TotalPrice
+                                            @item.Address
                                         </td>
                                         <td>
-                                            @item.Room.RoomType.Name
+                                            @item.Phone
                                         </td>
                                         <td>
-                                            @item.User.FirstName  @item.User.LastName
+                                            @item.Gender
                                         </td>
                                         <td>
-                                            <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
-                                            <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
-                                            <a asp-action="Delete" asp-route-id="@item.BookingId" asp-route-roomid="@item.RoomNum">Delete</a>
+                                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                            <a asp-action="AddRole" asp-route-id="@item.Id" asp-route-name="@item.FirstName">Addrole</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                         </td>
                                     </tr>
                                 }

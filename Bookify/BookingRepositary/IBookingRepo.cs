@@ -6,7 +6,8 @@ namespace Bookify.BookingRepositary
     public interface IBookingRepo
     {
        public List<Booking> GetAllBookings();
-       public void AddBooking(BookingVM model);
+        public List<Booking> GetUserBookings(String UserId);
+        public void AddBooking(BookingVM model);
        
        public Booking DeleteBooking(int id);
      

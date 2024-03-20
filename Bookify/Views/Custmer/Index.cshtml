@@ -57,7 +57,7 @@
 <section class="rooms-section row ">
     @foreach (var room in Model)
     {
-        <div class="row center-lg">
+        <div class="row center-lg" id="booking">
             <div class="rooms col col-2">
                 @switch (room.RoomType.Name)
                 {
@@ -96,7 +96,7 @@
                 </div>
                 <p class="amount-text">NGN25,000 Per Night</p>
                 <div class="buttons-container">
-                    <a href="#" class="btn btn-ghost">View More</a>
+                    <a asp-action="showDetails" asp-controller="Custmer" asp-route-RoomNum="@room.RoomNum" class="btn btn-ghost">Show Details</a>
                     <a asp-action="GuestBooking" asp-controller="Custmer" asp-route-RoomNum="@room.RoomNum" class="btn btn-fill">Book Now</a>
                 </div>
             </div>

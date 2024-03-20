@@ -1,4 +1,5 @@
 ﻿using Bookify.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bookify.GuestRepositary
 {
@@ -6,8 +7,8 @@ namespace Bookify.GuestRepositary
     {
         public  Task<List<ApplicationUser>> GetAllCustomers();
         public Task<ApplicationUser> GetUserByIdAsync(string userId);
-        
-        public void addRole();
+        public Task<IEnumerable<string>> GetRolesForUser(string userId);
+        public  Task<bool> AddRoleToUser(string userId, string roleName);
         public Task<ApplicationUser> removeUser(string userId);
         public void removeRole();
         public void addUser(ApplicationUser user);
