@@ -53,12 +53,11 @@
         </div>
     </div>
 </section>
-
 <section class="rooms-section row ">
     @foreach (var room in Model)
     {
         <div class="row center-lg" id="booking">
-            <div class="rooms col col-2">
+            <div class="rooms  col col-2 shadow p-3 mb-5 bg-white rounded">
                 @switch (room.RoomType.Name)
                 {
                     case "Standard Single":
@@ -94,7 +93,7 @@
                         <p class="list-text">1 Kingsize bed</p>
                     </div>
                 </div>
-                <p class="amount-text">NGN25,000 Per Night</p>
+                <p class="amount-text">@room.RoomType.PricePerNight per night</p>
                 <div class="buttons-container">
                     <a asp-action="showDetails" asp-controller="Custmer" asp-route-RoomNum="@room.RoomNum" class="btn btn-ghost">Show Details</a>
                     <a asp-action="GuestBooking" asp-controller="Custmer" asp-route-RoomNum="@room.RoomNum" class="btn btn-fill">Book Now</a>

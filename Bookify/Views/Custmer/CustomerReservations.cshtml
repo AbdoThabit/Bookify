@@ -41,14 +41,14 @@ else
                         break;
                 }
 
-                <h3 class="room-title">@item.Room.RoomType.Name</h3>
-                <p class="room-text">@item.Room.RoomType.Description</p>
+                <h3 class="room-title">@item.Room.RoomType.Name @item.RoomNum</h3>
+                <p class="room-text">Room Number : @item.Room.RoomNum</p>
                 <h6 class="room-text">Check in Date : @item.CheckInDate</h6>
                 <h6 class="room-text">Check out Date : @item.CheckOutDate</h6>
 
                 <div class="buttons-container">
                     <a asp-action="GuestBooking" asp-controller="Custmer" class="btn btn-fill">Edit Dates</a>
-                    <a asp-action="Cancel" asp-controller="Custmer" asp-route-id="@item.BookingId" asp-route-roomid="@item.Room.RoomNum" class="btn btn-ghost">Cancel</a>
+                    <a asp-action="Cancel" asp-controller="Custmer" asp-route-id="@item.BookingId" asp-route-roomid="@item.Room.RoomNum" asp-route-guestid="@item.GuestId" class="btn btn-ghost">Cancel</a>
                 </div>
             </div>
 

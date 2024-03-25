@@ -70,16 +70,18 @@ namespace Bookify.Controllers
             var userReservations = _bookingRepository.GetUserBookings(id);
             return View(userReservations);
         }
-        public ActionResult Cancel(int id, int roomid)
+        public ActionResult Cancel(int id, int roomid ,string guestid)
         {
 
             _bookingRepository.DeleteBooking(id);
+
             Room room = _roomRepo.getRoomById(roomid);
             room.Status = "Avaliable";
             _roomRepo.Update(room);
-            return RedirectToAction("CustomerReservations");
+            return RedirectToAction("CustomerReservations", "Custmer", new { id = guestid });
+            ;
 
-            
+
         }
     }
 }
