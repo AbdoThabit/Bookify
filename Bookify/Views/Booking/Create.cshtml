@@ -5,8 +5,8 @@
     <form method="post" asp-action="Create" asp-controller="Booking">
 
         <div class="form-group">
-            <label asp-for="RoomTypeId">select Room</label>
-            <select class="form-control" asp-for="RoomTypeId" asp-items="@(new SelectList(ViewBag.Rooms, "RoomNum", "RoomType.Name")) " style="border:1px solid black">
+            <label asp-for="RoomTypeId">select Room Number</label>
+            <select class="form-control" asp-for="RoomTypeId" asp-items="@(new SelectList(ViewBag.Rooms, "RoomNum", "RoomNum")) " style="border:1px solid black">
                 <option></option>
             </select>
             <span asp-validation-for="RoomTypeId" class="text-danger"></span>
@@ -17,7 +17,7 @@
                     <select class="form-control" asp-for="GuestId" asp-items="@(new SelectList(ViewBag.Guests, "Id", "FirstName")) " style="border:1px solid black">
                         <option></option>
                     </select>
-                    <span asp-validation-for="RoomTypeId" class="text-danger"></span>
+                    <span asp-validation-for="GuestId" class="text-danger"></span>
                     <div>
                         <label asp-for="TotalPrice" class="form-label"></label>
                         <input asp-for="TotalPrice" style="border:1px solid black" class="form-control" />
@@ -31,7 +31,7 @@
                         <span asp-validation-for="CheckInDate" class="text-danger"></span>
                     </div>
                     <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker" inline="true">
-                        <label asp-for="CheckOutDate">CheckInDate</label>
+                        <label asp-for="CheckOutDate">CheckOutDate</label>
                         <input asp-for="CheckOutDate" style="border:1px solid black" placeholder="Select date" type="date" id="example" class="form-control">
                         <i class="fas fa-calendar input-prefix"></i>
                         <span asp-validation-for="CheckOutDate" class="text-danger"></span>
